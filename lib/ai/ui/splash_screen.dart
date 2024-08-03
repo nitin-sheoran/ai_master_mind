@@ -1,6 +1,10 @@
 import 'package:ai_master_mind/ai/helper/global.dart';
-import 'package:ai_master_mind/ai/ui/home_screen.dart';
+import 'package:ai_master_mind/ai/helper/pref.dart';
+import 'package:ai_master_mind/ai/ui/on_boarding_screen.dart';
+import 'package:ai_master_mind/ai/widget/custom_loding.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'home_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -14,12 +18,9 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
 
-      // Future.delayed(const Duration(seconds: 2), () {
-      //   Get.off(() =>
-      //   Pref.showOnboarding ? const OnboardingScreen() : const HomeScreen());
-      // });
     Future.delayed(const Duration(seconds: 2), () {
-      Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen()));
+      Get.off(() =>
+          Pref.showOnboarding ? const OnboardingScreen() : const HomeScreen());
     });
   }
 
@@ -33,7 +34,6 @@ class _SplashScreenState extends State<SplashScreen> {
         child: Column(
           children: [
             const Spacer(flex: 2),
-
             Card(
               shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(20))),
@@ -45,11 +45,8 @@ class _SplashScreenState extends State<SplashScreen> {
                 ),
               ),
             ),
-
             const Spacer(),
-
-            //const CustomLoading(),
-
+            const CustomLoading(),
             const Spacer(),
           ],
         ),
